@@ -4,14 +4,17 @@ workflows:
     max_build_duration: 60
     environment:
       flutter: "2.10.5"
-      java: "11"          # <-- forces JDK 11 on the runner
-scripts:
-  - name: Resolve packages
-    script: |
-      flutter clean
-      rm -f pubspec.lock
-      flutter pub get
-  - name: Build APK (debug)
-    script: flutter build apk --debug --no-sound-null-safety
+      java: "11"
+    scripts:
+      - name: Resolve packages
+        script: |
+          flutter clean
+          rm -f pubspec.lock
+          flutter pub get
+      - name: Build APK (debug)
+        script: |
+          flutter build apk --debug --no-sound-null-safety
     artifacts:
       - build/app/outputs/flutter-apk/app-debug.apk
+      # fallback glob in case Gradle changes the folder slightly:
+      - build/**/outputs/**/*.apk
