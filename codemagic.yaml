@@ -10,6 +10,7 @@ workflows:
         script: |
           flutter clean
           rm -f pubspec.lock
+          flutter pub cache clean
           flutter pub get
       - name: Build APK (debug)
         script: |
