@@ -33,7 +33,7 @@ apply plugin: 'com.google.gms.google-services'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
-    compileSdkVersion 32
+    compileSdkVersion 33
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
@@ -42,10 +42,11 @@ android {
     defaultConfig {
         applicationId "com.biblechamps.app"
         minSdkVersion 21
-        targetSdkVersion 32
-        versionCode flutterVersionCode.toInteger()
-        versionName flutterVersionName
+        targetSdkVersion 33
+        versionCode 29
+        versionName "2.0.5"
         ndkVersion "23.1.7779620"
+        multiDexEnabled true
         ndk {
             debugSymbolLevel 'FULL'
         }
