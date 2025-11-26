@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "988896934397",
+    "firebase_url": "https://bible-champs.firebaseio.com",
+    "project_id": "bible-champs",
+    "storage_bucket": "bible-champs.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:988896934397:android:b4c51d98b1537aaa5a0194",
+        "android_client_info": {
+          "package_name": "com.biblechamps.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "988896934397-gnile3s8u1er4in7k066r70c74k5pdb9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCJuCpP0_VDGawM0b_dFRNdgr9eVSv21gY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "988896934397-gnile3s8u1er4in7k066r70c74k5pdb9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
