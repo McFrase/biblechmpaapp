@@ -6,16 +6,18 @@ workflows:
       flutter: "2.10.5"
       java: "11"
     scripts:
-      - name: Resolve packages
+      - name: Resolve packages (use lockfile)
         script: |
+          flutter --version
           flutter clean
-          rm -f pubspec.lock
-          flutter pub cache clean
-          flutter pub get
+          flutter pub get --enforce-lockfile
       - name: Build APK (debug)
         script: |
           flutter build apk --debug --no-sound-null-safety
     artifacts:
       - build/app/outputs/flutter-apk/app-debug.apk
-      # fallback glob in case Gradle changes the folder slightly:
-      - build/**/outputs/**/*.apk
+    cache:
+      cache_paths:
+        - ~/.pub-cache
+        - ~/.gradle/caches
+        - android/.gradle
