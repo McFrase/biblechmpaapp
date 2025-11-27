@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:back_button_interceptor/back_button_interceptor.dart';
-import 'package:badges/badges.dart';
+import 'package:badges/badges.dart' as badges;
 import 'package:biblechamps/dialogs/bonusgems.dart';
 import 'package:biblechamps/dialogs/celebrations.dart';
 import 'package:biblechamps/dialogs/champions.dart';
