@@ -356,8 +356,8 @@ class _HomePageState extends State<HomePage> {
                       children: [
                         Padding(
                           padding: const EdgeInsets.all(2.5),
-                          child: Badge(
-                            badgeContent: const Text(
+                          child: badges.Badge(
+                            badges.badgeContent: const Text(
                               'FREE',
                               style: TextStyle(
                                 color: Colors.white,
@@ -365,12 +365,12 @@ class _HomePageState extends State<HomePage> {
                               ),
                             ),
                             borderRadius: BorderRadius.circular(20.0),
-                            badgeColor: Colors.orange,
+                            badges.badgeColor: Colors.orange,
                             padding: const EdgeInsets.all(3.0),
-                            shape: BadgeShape.square,
+                            shape: badges.BadgeShape.square,
                             toAnimate: true,
                             position:
-                                BadgePosition.bottomEnd(bottom: 10, end: 0),
+                                badges.BadgePosition.bottomEnd(bottom: 10, end: 0),
                             child: TextButton(
                               style: TextButton.styleFrom(
                                 padding: const EdgeInsets.all(0.0),
