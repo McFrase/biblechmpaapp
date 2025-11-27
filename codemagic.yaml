@@ -13,7 +13,7 @@ workflows:
           flutter pub get
       - name: Build APK (debug)
         script: |
-          flutter build apk --debug --no-sound-null-safety
+          flutter build apk --debug
     artifacts:
       - build/app/outputs/flutter-apk/app-debug.apk
     cache:
