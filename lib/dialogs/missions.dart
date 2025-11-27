@@ -4,7 +4,7 @@ import 'package:badges/badges.dart' as badges;
 import 'package:biblechamps/services/audio.dart';
 import 'package:biblechamps/services/database.dart';
 import 'package:biblechamps/services/ui.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide Badge;
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
