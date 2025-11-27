@@ -17,14 +17,14 @@ dependencies:
   assets_audio_player: 3.0.3+6         # pinned for Flutter 2.10.x
   awesome_notifications: ^0.6.21
   back_button_interceptor: ^5.0.2
-  badges: ^2.0.2
+  badges: ^3.1.1
   confetti: ^0.6.0
   country_icons: ^2.0.2
   cupertino_icons: ^1.0.4
   dio: ^4.0.4
   dotted_border: ^2.0.0+2
   double_back_to_close_app: ^2.1.0
-  extended_image: ^6.0.1
+  extended_image: ^7.0.2
 
   # Firebase pins compatible with Flutter 2.10.x (Dart 2.16)
   firebase_core: 1.10.6
