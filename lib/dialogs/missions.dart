@@ -4,7 +4,7 @@ import 'package:badges/badges.dart' as badges;
 import 'package:biblechamps/services/audio.dart';
 import 'package:biblechamps/services/database.dart';
 import 'package:biblechamps/services/ui.dart';
-import 'package:flutter/material.dart' hide Badge;
+import 'package:flutter/material.dart' hide Badge; // hide Material Badge
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
@@ -22,8 +22,8 @@ class _MissionsState extends State<Missions> {
     double accumulate = 0;
 
     DatabaseService().missions[widget.type].forEach((value) {
-      int full = value['count'] * DatabaseService().getMultiplier(widget.type);
-      int rem = DatabaseService().getMissionData(widget.type, value['type'])!;
+      final full = value['count'] * DatabaseService().getMultiplier(widget.type);
+      final rem = DatabaseService().getMissionData(widget.type, value['type'])!;
       accumulate += (full - rem) / full;
     });
 
@@ -32,16 +32,13 @@ class _MissionsState extends State<Missions> {
 
   List<Widget> buildMissions() {
     return DatabaseService().missions[widget.type]!.map<Widget>((value) {
-      bool pending =
+      final pending =
           DatabaseService().getMissionData(widget.type, value['type'])! > 0;
 
       return Card(
         child: ListTile(
           enabled: pending,
-          leading: FaIcon(
-            value['icon'],
-            size: 30,
-          ),
+          leading: FaIcon(value['icon'], size: 30),
           title: Text(
             value['mission'].replaceAll(
               '|<>|',
@@ -54,7 +51,7 @@ class _MissionsState extends State<Missions> {
               : const Text('Completed'),
           trailing: ElevatedButton(
             style: ElevatedButton.styleFrom(
-              primary: Colors.green,
+              backgroundColor: Colors.green, // was `primary:`
               fixedSize: const Size(75, 40),
             ),
             onPressed: pending ? () => buttonOnPressed(value) : null,
@@ -112,8 +109,11 @@ class _MissionsState extends State<Missions> {
           DatabaseService().gems = DatabaseService().gems! -
               (3 * DatabaseService().getMultiplier(widget.type)!);
           if (value['type'] != 'usegems') {
-            await DatabaseService().updateMissions(widget.type, 'usegems',
-                3 * DatabaseService().getMultiplier(widget.type)!);
+            await DatabaseService().updateMissions(
+              widget.type,
+              'usegems',
+              3 * DatabaseService().getMultiplier(widget.type)!,
+            );
           }
 
           await DatabaseService().updateMissions(
@@ -197,22 +197,25 @@ class _MissionsState extends State<Missions> {
                       left: 80,
                       bottom: 4.5,
                       child: badges.Badge(
-                        badges.badgeContent: const Padding(
+                        position: badges.BadgePosition.bottomEnd(),
+                        badgeAnimation: const badges.BadgeAnimation.scale(
+                          animationDuration: Duration(milliseconds: 200),
+                        ),
+                        badgeStyle: const badges.BadgeStyle(
+                          badgeColor: Colors.orange, // ← replaces badgeColor:
                           padding: EdgeInsets.all(2.5),
-                          child: Text(
-                            '+1',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 15,
-                            ),
+                        ),
+                        badgeContent: const Text(
+                          '+1',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 15,
                           ),
                         ),
-                        badges.badgeColor: Colors.orange,
-                        toAnimate: true,
-                        position: badges.BadgePosition.bottomEnd(),
                         child: Image.file(
                           File(
-                              '${DatabaseService().downloadPath}/images/multiplier.png'),
+                            '${DatabaseService().downloadPath}/images/multiplier.png',
+                          ),
                           width: 50,
                         ),
                       ),
@@ -223,10 +226,7 @@ class _MissionsState extends State<Missions> {
             ),
             Expanded(
               child: ListView(
-                padding: const EdgeInsets.symmetric(
-                  vertical: 10,
-                  horizontal: 0,
-                ),
+                padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 0),
                 children: buildMissions(),
               ),
             ),
