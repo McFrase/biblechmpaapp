@@ -6,11 +6,11 @@ workflows:
       flutter: "2.10.5"
       java: "11"
     scripts:
-      - name: Resolve packages (use lockfile)
+      - name: Resolve packages (2.10.5-compatible)
         script: |
           flutter --version
           flutter clean
-          flutter pub get --enforce-lockfile
+          flutter pub get
       - name: Build APK (debug)
         script: |
           flutter build apk --debug --no-sound-null-safety
