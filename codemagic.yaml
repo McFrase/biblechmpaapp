@@ -3,7 +3,7 @@ workflows:
     name: Android Debug APK
     max_build_duration: 60
     environment:
-      flutter: "2.10.5"
+      flutter: "3.7.12"
       java: "11"
     scripts:
       - name: Resolve packages (2.10.5-compatible)
