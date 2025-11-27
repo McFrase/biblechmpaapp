@@ -16,7 +16,7 @@ import 'package:biblechamps/services/audio.dart';
 import 'package:biblechamps/services/database.dart';
 import 'package:biblechamps/services/ui.dart';
 import 'package:double_back_to_close_app/double_back_to_close_app.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide Badge;
 import 'package:rate_my_app/rate_my_app.dart';
 import 'package:url_launcher/url_launcher.dart';
 
