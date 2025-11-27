@@ -357,7 +357,7 @@ class _HomePageState extends State<HomePage> {
                         Padding(
                           padding: const EdgeInsets.all(2.5),
                           child: badges.Badge(
-                            badges.badgeContent: const Text(
+                            badgeContent: const Text(
                               'FREE',
                               style: TextStyle(
                                 color: Colors.white,
