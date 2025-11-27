@@ -11,7 +11,7 @@ import 'package:biblechamps/services/audio.dart';
 import 'package:biblechamps/services/database.dart';
 import 'package:biblechamps/services/game.dart';
 import 'package:biblechamps/services/ui.dart';
-import 'package:flutter/material.dart' hide Badge;
+import 'package:flutter/material.dart' hide Badge; // hide Material Badge
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:timer_count_down/timer_controller.dart';
@@ -57,16 +57,10 @@ abstract class GameState<T extends StatefulWidget> extends State<T>
 
   int get maxValue => max! * value!;
 
-  // override this
-  // used to reset game state
-  // call in initState()
   void refreshGame() {}
 
-  // must override this
-  // used to build the next game instance
   Widget nextGame();
 
-  // used to initialize state fields
   void initializeGame(
     int? index,
     int? valid,
@@ -91,9 +85,7 @@ abstract class GameState<T extends StatefulWidget> extends State<T>
       buttonColor: Colors.red,
       onClick: () {
         if (toHome) {
-          Navigator.of(context).popUntil(
-            ModalRoute.withName('/home'),
-          );
+          Navigator.of(context).popUntil(ModalRoute.withName('/home'));
         } else {
           Navigator.of(context).pushNamedAndRemoveUntil(
             '/list${type}games',
@@ -410,7 +402,7 @@ abstract class GameState<T extends StatefulWidget> extends State<T>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false, // prevent fab moving up with keyboard
+      resizeToAvoidBottomInset: false,
       body: Container(
         padding:
             EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
@@ -538,7 +530,7 @@ abstract class GameState<T extends StatefulWidget> extends State<T>
                                     animationDuration: 2000,
                                     lineHeight: 5.0,
                                     percent: score! / (level! * maxValue),
-                                    barRadius: Radius.circular(10),
+                                    barRadius: const Radius.circular(10),
                                     progressColor: Colors.green,
                                   ),
                                 ],
@@ -548,20 +540,23 @@ abstract class GameState<T extends StatefulWidget> extends State<T>
                                 padding: const EdgeInsets.fromLTRB(
                                     0.0, 7.5, 20, 7.5),
                                 child: badges.Badge(
-                                  badgeContent: Padding(
-                                    padding: const EdgeInsets.all(2.5),
-                                    child: Text(
-                                      '${DatabaseService().gems}',
-                                      style: const TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 15,
-                                      ),
+                                  position: badges.BadgePosition.topEnd(
+                                    top: 5,
+                                    end: -10,
+                                  ),
+                                  badgeAnimation:
+                                      const badges.BadgeAnimation.noAnimation(),
+                                  badgeStyle: const badges.BadgeStyle(
+                                    badgeColor: Colors.orange,
+                                    padding: EdgeInsets.all(2.5),
+                                  ),
+                                  badgeContent: Text(
+                                    '${DatabaseService().gems}',
+                                    style: const TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 15,
                                     ),
                                   ),
-                                  badges.badgeColor: Colors.orange,
-                                  toAnimate: false,
-                                  position:
-                                      badges.BadgePosition.topEnd(top: 5, end: -10),
                                   child: Image.file(
                                     File(
                                         '${DatabaseService().downloadPath}/images/gem.png'),
@@ -574,6 +569,16 @@ abstract class GameState<T extends StatefulWidget> extends State<T>
                                 padding: const EdgeInsets.fromLTRB(
                                     0.0, 7.5, 20, 7.5),
                                 child: badges.Badge(
+                                  position: badges.BadgePosition.topEnd(
+                                    top: 5,
+                                    end: -12.5,
+                                  ),
+                                  badgeAnimation:
+                                      const badges.BadgeAnimation.noAnimation(),
+                                  badgeStyle: badges.BadgeStyle(
+                                    badgeColor: timerColor,
+                                    padding: const EdgeInsets.all(2.5),
+                                  ),
                                   badgeContent: Container(
                                     width: 20,
                                     height: 20,
@@ -592,7 +597,6 @@ abstract class GameState<T extends StatefulWidget> extends State<T>
                                             AudioService().pauseMusic();
                                             AudioService().clockTick();
                                           }
-
                                           setState(() {});
                                         });
 
@@ -606,12 +610,6 @@ abstract class GameState<T extends StatefulWidget> extends State<T>
                                       },
                                       onFinished: () => evaluate(false),
                                     ),
-                                  ),
-                                  badges.badgeColor: timerColor,
-                                  toAnimate: false,
-                                  position: badges.BadgePosition.topEnd(
-                                    top: 5,
-                                    end: -12.5,
                                   ),
                                   child: Image.file(
                                     File(
