@@ -34,6 +34,7 @@ jobs:
       - name: Create Pull Request with lockfile
         uses: peter-evans/create-pull-request@v6
         with:
+          token: ${{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}}
           commit-message: "chore: add pubspec.lock (Flutter 2.10.5)"
           branch: chore/lockfile-flutter-2-10-5
           title: "chore: add pubspec.lock (Flutter 2.10.5)"
