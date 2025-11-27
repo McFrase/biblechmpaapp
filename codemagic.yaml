@@ -6,7 +6,7 @@ workflows:
       flutter: "3.7.12"
       java: "11"
     scripts:
-      - name: Resolve packages (2.10.5-compatible)
+      - name: Resolve packages
         script: |
           flutter --version
           flutter clean
