@@ -3,7 +3,7 @@ import 'dart:io';
 
 import 'package:animate_do/animate_do.dart';
 import 'package:back_button_interceptor/back_button_interceptor.dart';
-import 'package:badges/badges.dart';
+import 'package:badges/badges.dart' as badges;
 import 'package:biblechamps/dialogs/didyouknow.dart';
 import 'package:biblechamps/dialogs/gallery.dart';
 import 'package:biblechamps/pages/score.dart';
