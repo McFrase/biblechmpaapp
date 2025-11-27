@@ -1,0 +1,36 @@
+name: Generate Flutter lockfile (2.10.5)
+
+on:
+  workflow_dispatch: {}   # run it manually from the Actions tab
+
+jobs:
+  lock:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Flutter 2.10.5
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '2.10.5'
+          cache: true
+
+      - name: Flutter pub get (produce pubspec.lock)
+        run: |
+          flutter --version
+          flutter clean
+          rm -f pubspec.lock
+          flutter pub get
+
+      - name: Commit lockfile if changed
+        run: |
+          if [[ -n "$(git status --porcelain pubspec.lock)" ]]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add pubspec.lock
+            git commit -m "chore: generate pubspec.lock (Flutter 2.10.5)"
+            git push
+          else
+            echo "pubspec.lock already up-to-date."
+          fi
