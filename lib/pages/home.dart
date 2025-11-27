@@ -213,18 +213,13 @@ class _HomePageState extends State<HomePage> {
         await rateMyApp.showRateDialog(
           context,
           title: 'Rate this app',
-          // The dialog title.
           message:
               "If you like this app, please take a little bit of your time to review it!\nIt really helps us and it shouldn't take you more than one minute.",
-          // The dialog message.
           rateButton: 'RATE',
-          // The dialog "rate" button text.
           noButton: 'NO THANKS',
-          // The dialog "no" button text.
           laterButton: 'MAYBE LATER',
-          // The dialog "later" button text.
-          onDismissed: () => rateMyApp.callEvent(RateMyAppEventType
-              .laterButtonPressed), // Called when the user dismissed the dialog (either by taping outside or by pressing the "back" button).
+          onDismissed: () =>
+              rateMyApp.callEvent(RateMyAppEventType.laterButtonPressed),
         );
       }
     });
@@ -357,6 +352,18 @@ class _HomePageState extends State<HomePage> {
                         Padding(
                           padding: const EdgeInsets.all(2.5),
                           child: badges.Badge(
+                            position: badges.BadgePosition.bottomEnd(
+                              bottom: 10,
+                              end: 0,
+                            ),
+                            badgeAnimation:
+                                const badges.BadgeAnimation.slide(),
+                            badgeStyle: badges.BadgeStyle(
+                              shape: badges.BadgeShape.square,
+                              borderRadius: BorderRadius.circular(20.0),
+                              padding: const EdgeInsets.all(3.0),
+                              badgeColor: Colors.orange,
+                            ),
                             badgeContent: const Text(
                               'FREE',
                               style: TextStyle(
@@ -364,20 +371,16 @@ class _HomePageState extends State<HomePage> {
                                 fontSize: 12,
                               ),
                             ),
-                            borderRadius: BorderRadius.circular(20.0),
-                            badges.badgeColor: Colors.orange,
-                            padding: const EdgeInsets.all(3.0),
-                            shape: badges.BadgeShape.square,
-                            toAnimate: true,
-                            position:
-                                badges.BadgePosition.bottomEnd(bottom: 10, end: 0),
                             child: TextButton(
                               style: TextButton.styleFrom(
                                 padding: const EdgeInsets.all(0.0),
                               ),
                               onPressed: () => showBonusGems(),
-                              child: Image.file(File(
-                                  '${DatabaseService().downloadPath}/images/gem.png')),
+                              child: Image.file(
+                                File(
+                                  '${DatabaseService().downloadPath}/images/gem.png',
+                                ),
+                              ),
                             ),
                           ),
                         ),
