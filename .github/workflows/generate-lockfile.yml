@@ -3,7 +3,6 @@ name: Generate Flutter lockfile (2.10.5)
 on:
   workflow_dispatch: {}   # run manually from the Actions tab
 
-# Give the workflow permission to write contents and open PRs
 permissions:
   contents: write
   pull-requests: write
@@ -18,6 +17,7 @@ jobs:
           fetch-depth: 0
 
       - name: Set up Flutter 2.10.5
+      # v2 action supports pinned Flutter versions
         uses: subosito/flutter-action@v2
         with:
           flutter-version: '2.10.5'
@@ -30,16 +30,15 @@ jobs:
           rm -f pubspec.lock
           flutter pub get
 
-      # Create a PR instead of pushing directly (works with protected branches)
+      # Open a PR with the generated pubspec.lock
       - name: Create Pull Request with lockfile
         uses: peter-evans/create-pull-request@v6
         with:
-          token: ${{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}}
+          token: ${{ secrets.GH_PAT }}   # <-- use the secret
           commit-message: "chore: add pubspec.lock (Flutter 2.10.5)"
           branch: chore/lockfile-flutter-2-10-5
           title: "chore: add pubspec.lock (Flutter 2.10.5)"
           body: |
-            This PR adds a pubspec.lock generated using Flutter 2.10.5.
-            Merge this to stabilize CI dependency resolution in Codemagic.
+            Adds pubspec.lock generated with Flutter 2.10.5 so Codemagic can enforce it.
           add-paths: |
             pubspec.lock
