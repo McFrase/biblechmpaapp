@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:badges/badges.dart';
+import 'package:badges/badges.dart' as badges;
 import 'package:biblechamps/services/audio.dart';
 import 'package:biblechamps/services/database.dart';
 import 'package:biblechamps/services/ui.dart';
