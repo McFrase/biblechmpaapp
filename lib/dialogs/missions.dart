@@ -196,8 +196,8 @@ class _MissionsState extends State<Missions> {
                     Positioned(
                       left: 80,
                       bottom: 4.5,
-                      child: Badge(
-                        badgeContent: const Padding(
+                      child: badges.Badge(
+                        badges.badgeContent: const Padding(
                           padding: EdgeInsets.all(2.5),
                           child: Text(
                             '+1',
@@ -207,9 +207,9 @@ class _MissionsState extends State<Missions> {
                             ),
                           ),
                         ),
-                        badgeColor: Colors.orange,
+                        badges.badgeColor: Colors.orange,
                         toAnimate: true,
-                        position: BadgePosition.bottomEnd(),
+                        position: badges.BadgePosition.bottomEnd(),
                         child: Image.file(
                           File(
                               '${DatabaseService().downloadPath}/images/multiplier.png'),
