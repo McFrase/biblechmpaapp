@@ -547,8 +547,8 @@ abstract class GameState<T extends StatefulWidget> extends State<T>
                               Padding(
                                 padding: const EdgeInsets.fromLTRB(
                                     0.0, 7.5, 20, 7.5),
-                                child: Badge(
-                                  badgeContent: Padding(
+                                child: badges.Badge(
+                                  badges.badgeContent: Padding(
                                     padding: const EdgeInsets.all(2.5),
                                     child: Text(
                                       '${DatabaseService().gems}',
@@ -558,10 +558,10 @@ abstract class GameState<T extends StatefulWidget> extends State<T>
                                       ),
                                     ),
                                   ),
-                                  badgeColor: Colors.orange,
+                                  badges.badgeColor: Colors.orange,
                                   toAnimate: false,
                                   position:
-                                      BadgePosition.topEnd(top: 5, end: -10),
+                                      badges.BadgePosition.topEnd(top: 5, end: -10),
                                   child: Image.file(
                                     File(
                                         '${DatabaseService().downloadPath}/images/gem.png'),
@@ -573,8 +573,8 @@ abstract class GameState<T extends StatefulWidget> extends State<T>
                               Padding(
                                 padding: const EdgeInsets.fromLTRB(
                                     0.0, 7.5, 20, 7.5),
-                                child: Badge(
-                                  badgeContent: Container(
+                                child: badges.Badge(
+                                  badges.badgeContent: Container(
                                     width: 20,
                                     height: 20,
                                     alignment: Alignment.center,
@@ -607,9 +607,9 @@ abstract class GameState<T extends StatefulWidget> extends State<T>
                                       onFinished: () => evaluate(false),
                                     ),
                                   ),
-                                  badgeColor: timerColor,
+                                  badges.badgeColor: timerColor,
                                   toAnimate: false,
-                                  position: BadgePosition.topEnd(
+                                  position: badges.BadgePosition.topEnd(
                                     top: 5,
                                     end: -12.5,
                                   ),
