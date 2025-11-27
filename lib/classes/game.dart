@@ -548,7 +548,7 @@ abstract class GameState<T extends StatefulWidget> extends State<T>
                                 padding: const EdgeInsets.fromLTRB(
                                     0.0, 7.5, 20, 7.5),
                                 child: badges.Badge(
-                                  badges.badgeContent: Padding(
+                                  badgeContent: Padding(
                                     padding: const EdgeInsets.all(2.5),
                                     child: Text(
                                       '${DatabaseService().gems}',
@@ -574,7 +574,7 @@ abstract class GameState<T extends StatefulWidget> extends State<T>
                                 padding: const EdgeInsets.fromLTRB(
                                     0.0, 7.5, 20, 7.5),
                                 child: badges.Badge(
-                                  badges.badgeContent: Container(
+                                  badgeContent: Container(
                                     width: 20,
                                     height: 20,
                                     alignment: Alignment.center,
